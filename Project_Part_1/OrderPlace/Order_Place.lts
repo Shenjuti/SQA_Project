@@ -1,0 +1,6 @@
+Customer =(see_menu -> order_place_successfull_msgrecieve -> Customer).
+Food =(show_menu -> add_food -> Food).
+Order =(food_added -> order_place_successfull -> Order).
+
+||Customer_Food_Order = (Customer || Food || Order)
+			/{see_menu/show_menu, add_food/food_added, order_place_successfull/order_place_successfull_msgrecieve}.

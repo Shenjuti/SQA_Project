@@ -1,0 +1,2 @@
+Reservation =(book_reservation -> if_available -> booking_successful ->Reservation
+		|book_reservation -> not_available -> already_booked ->Reservation).

@@ -1,0 +1,36 @@
+digraph p_Customer {
+size="8,10";
+  GT [shape=box,style=dotted,label="Customer"];
+  GT -> S10;
+	S10 -> S2  [color=black,style=bold,label="out!RESERVATION,sendbit"];
+	S2 -> S8  [color=black,style=bold,label="in?BOOKING_SUCCESSFULLY,recvbit"];
+	S8 -> S4  [color=black,style=solid,label="((recvbit==sendbit))"];
+	S8 -> S6  [color=black,style=solid,label="else"];
+	S4 -> S10  [color=black,style=solid,label="sendbit = (2-sendbit)"];
+	S6 -> S7  [color=black,style=solid,label="((elsebit==sendbit))"];
+	S7 -> S10  [color=black,style=solid,label="sendbit = (1-sendbit)"];
+}
+digraph p_Reserve1 {
+size="8,10";
+  GT [shape=box,style=dotted,label="Reserve1"];
+  GT -> S3;
+	S3 -> S2  [color=black,style=bold,label="in?RESERVATION,recvbit"];
+	S2 -> S3  [color=black,style=bold,label="out!BOOKING_SUCCESSFULLY,recvbit"];
+}
+digraph p_Reserve2 {
+size="8,10";
+  GT [shape=box,style=dotted,label="Reserve2"];
+  GT -> S3;
+	S3 -> S2  [color=black,style=bold,label="in?RESERVATION,elsebit"];
+	S2 -> S3  [color=black,style=bold,label="out!ALREADY_BOOKED,elsebit"];
+}
+digraph init {
+size="8,10";
+  GT [shape=box,style=dotted,label="init"];
+  GT -> S1;
+	S1 -> S2  [color=black,style=solid,label="(run Customer(toS,toR))"];
+	S2 -> S3  [color=black,style=solid,label="(run Reserve1(toR,toS))"];
+	S3 -> S4  [color=black,style=solid,label="(run Reserve2(toR,toS))"];
+	S4 -> S0  [color=black,style=solid,label="-end-"];
+  S4 [color=blue,style=bold,shape=box];
+}

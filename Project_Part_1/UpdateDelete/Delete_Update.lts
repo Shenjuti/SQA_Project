@@ -1,0 +1,16 @@
+Admin = (update_food -> update_succesfull_msgrecieve -> delete_food -> delete_succesfull_msgrecieve -> Admin).
+Food = (update_food_msgrecieve -> update_successfull -> delete_food_msgrecieve -> delete_succesful -> Food).
+
+||Admin_Food = (Admin || Food)
+		/{update_food/update_food_msgrecieve, update_successfull/update_succesfull_msgrecieve, delete_food/delete_food_msgrecieve, delete_succesful/delete_succesfull_msgrecieve}.
+
+
+
+
+
+
+
+
+
+
+
